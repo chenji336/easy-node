@@ -43,3 +43,7 @@ Time per request:       4.202 [ms] (mean, across all concurrent requests)
 Transfer rate:          2399.04 [Kbytes/sec] received
 ```
 
+## 其他
+
+git 连接代理：`git config --global http.proxy http://127.0.0.1:11235`
+取消代理：`git config --global --unset http.proxy`
