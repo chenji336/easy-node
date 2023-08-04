@@ -1,0 +1,12 @@
+// 解释为什么 setEncoding 后就没有乱码了
+// 内部调用 decoder，发现文字不满足三个的倍数，保存起来，后续凑齐了三的倍数，再输出
+
+
+const StringDecoder = require('string_decoder').StringDecoder
+const decoder = new StringDecoder('utf-8')
+
+const buf1 = Buffer.from([0xE5, 0xBA, 0x8A, 0xE5, 0x89, 0x8D, 0xE6, 0x98, 0x8E, 0xE6, 0x9C])
+console.log(decoder.write(buf1))
+
+const buf2 = Buffer.from([0x88, 0xE5, 0x85, 0x89, 0xEF, 0xBC, 0x8C, 0xE7, 0x96, 0x91, 0xE6]);
+console.log(decoder.write(buf2))
