@@ -1,2 +1,3 @@
-# easy-node
-深入浅出理解 nodejs
+# 深入浅出学习 nodejs 的心得和代码记录
+
+
