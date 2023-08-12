@@ -1,5 +1,7 @@
 # 深入浅出学习 nodejs 的心得和代码记录
 
+[深入浅出 nodejs-飞书](https://crmwwgawog.feishu.cn/docx/KuB7dIM3toCVdKxYtLYcBPBmnNh)
+
 ## 第六章 理解 Buffer
 
 ### 性能查看
