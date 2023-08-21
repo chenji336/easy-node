@@ -1,0 +1,14 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "1、按照书上的 curl 有问题\r ```\r 解决参考：https://www.shuijingwanwq.com/2022/03/14/6124/\r powerShell 调用 cookie: `curl -Headers @{\"Cookie\"=\"foo=bar;baz=val\"} \"http://127.0.0.1:8888/path?foo=bar&foo=baz\"`\r 还是有问题，该 cookie 无效",
+  "main": "01.base.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "query-string": "^1.0.0"
+  }
+}
