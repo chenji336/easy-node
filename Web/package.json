@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "query-string": "^1.0.0"
+  },
+  "devDependencies": {
+    "mime": "^3.0.0"
   }
 }
