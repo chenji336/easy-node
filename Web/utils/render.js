@@ -4,11 +4,11 @@
  */
 
 const compile = (str) => {
-  let tpl = str.replace(/<%=(\w+)%>/g, (match, code) => {
+  let tpl = str.replace(/<%=([\s\S]+?)%>/g, (match, code) => {
     // console.log(match, code)
-    return `' + obj.${code}`
+    return `' + ${code} + '`
   })
-  tpl = `return '${tpl}`
+  tpl = `with(obj) {return '${tpl}'}`
   console.log('tpl:', tpl)
  return new Function('obj', tpl)
 }
@@ -23,6 +23,15 @@ const render = (compiled, data) => {
 
 render(
   compile('Hello <%=username%>'),
+  {
+    username: 'chenji'
+  }
+) // => Hello chenji
+
+// 问题，不能映射普通字符
+// 可以通过 witch 解决
+render(
+  compile('Hello <%="username"%> end'),
   {
     username: 'chenji'
   }
