@@ -1,0 +1,11 @@
+{
+  "name": "module-exports-require",
+  "version": "1.0.0",
+  "description": "> node 做的包装",
+  "main": "getJson.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
