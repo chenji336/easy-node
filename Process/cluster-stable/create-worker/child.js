@@ -28,6 +28,7 @@ process.on('uncaughtException', (err) => {
   })
 
   // 停止接收新的连接
+  // 测试发现：第二次错误调用才会触发（真实情况待定）
   worker.close(() => {
     console.log('worker close')
     // 已有的所有连接断开后，退出进程
