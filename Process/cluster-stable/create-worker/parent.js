@@ -13,11 +13,17 @@ const createWorker = () => {
   workers[worker.pid] = worker
   console.log('Create worker. pid:', worker.pid)
 
-  // 退出重新启动新进程
+  // 启动新进程
+  worker.on('message', message => {
+    if (message.act === 'suicide') {
+      createWorker()
+    }
+  })
+
+  // 退出
   worker.on('exit', () => {
     console.log('Worker', worker.pid, 'exited.')
     delete workers[worker.pid]
-    createWorker()
   })
 }
 

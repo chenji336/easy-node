@@ -5,6 +5,7 @@ const server = http.createServer((req, res) => {
     'Content-Type': 'text/plain'
   })
   res.end('handled by child, child is ' + process.pid + '\n')
+  throw new Error('mock exception')
 })
 
 let worker
@@ -17,10 +18,24 @@ process.on('message', (m, tcp) => {
   }
 })
 
-process.on('uncaughtException', () => {
+process.on('uncaughtException', (err) => {
+  // 记录关键日志（知道什么原因导致的异常）
+  console.log('err:', err)
+
+  // 断开连接之前告诉 master，让 master 提前创建 worker
+  process.send({
+    act: 'suicide'
+  })
+
   // 停止接收新的连接
   worker.close(() => {
+    console.log('worker close')
     // 已有的所有连接断开后，退出进程
     process.exit(1)
   })
+
+  // 超时处理
+  setTimeout(() => {
+    process.exit(1)
+  }, 5000);
 })
